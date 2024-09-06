@@ -4,11 +4,11 @@
   "description": "An immersive 3D boxing arena game",
   "main": "src/index.jsx",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+}
   "dependencies": {
     "@react-three/drei": "^9.46.0",
     "@react-three/fiber": "^8.9.1",
