@@ -4,10 +4,9 @@ dependencies:
   react: 18.3.1
   react-dom: 18.3.1
   react-scripts: 5.0.1
-  three: 0.168.0
+  three: 0.147.0
 devDependencies:
   '@babel/plugin-proposal-private-property-in-object': 7.21.11
-  typescript: 4.9.5
 packages:
   /@alloc/quick-lru/5.2.0:
     dev: false
@@ -10661,10 +10660,10 @@ packages:
       three: '>=0.128.0'
     resolution:
       integrity: sha512-ZN25Na/Xg7APhGKwJ1zhGdhZDsDGGnnm1k5Z+9LLlnfsFye4jigvbN3eA/Ta8hQmBNmEHXoozpmpKK1x8dCePQ==
-  /three/0.168.0:
+  /three/0.147.0:
     dev: false
     resolution:
-      integrity: sha512-6m6jXtDwMJEK/GGMbAOTSAmxNdzKvvBzgd7q8bE/7Tr6m7PaBh5kKLrN7faWtlglXbzj7sVba48Idwx+NRsZXw==
+      integrity: sha512-LPTOslYQXFkmvceQjFTNnVVli2LaVF6C99Pv34fJypp8NbQLbTlu3KinZ0zURghS5zEehK+VQyvWuPZ/Sm8fzw==
   /throat/6.0.2:
     dev: false
     resolution:
@@ -10886,13 +10885,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
-  /typescript/4.9.5:
-    dev: true
-    engines:
-      node: '>=4.2.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
   /unbox-primitive/1.0.2:
     dependencies:
       call-bind: 1.0.7
@@ -11666,5 +11658,4 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-scripts: 5.0.1
-  three: ^0.168.0
-  typescript: ^4.9.5
+  three: ^0.147.0

@@ -4,10 +4,7 @@
   "description": "An immersive 3D boxing arena game",
   "main": "src/index.jsx",
   "scripts": {
-d",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-}"start": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
