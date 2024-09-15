@@ -7,7 +7,6 @@ import Opponent from './components/Opponent';
 import Lighting from './components/Lighting';
 import UserInterface from './components/UserInterface';
 import SoundEffects from './components/SoundEffects';
-import LoadingScreen from './components/LoadingScreen';
 import './App.css';
 
 function App() {
@@ -17,12 +16,11 @@ function App() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    if (playerHealth <= 0 || opponentHealth <= 0) {
-      setGameState('gameOver');
-    }
-  }, [playerHealth, opponentHealth]);
+    console.log('Game State:', gameState);
+  }, [gameState]);
 
   const startFight = () => {
+    console.log('Starting fight...');
     setGameState('fighting');
     setPlayerHealth(100);
     setOpponentHealth(100);
@@ -30,6 +28,7 @@ function App() {
   };
 
   const handlePunch = (attacker) => {
+    console.log(`${attacker} punched!`);
     const damage = Math.floor(Math.random() * 10) + 5;
     if (attacker === 'player') {
       setOpponentHealth((prev) => Math.max(0, prev - damage));
@@ -41,26 +40,30 @@ function App() {
 
   return (
     <div className="App">
-      <Suspense fallback={<LoadingScreen />}>
-        <Canvas shadows camera={{ position: [0, 5, 10], fov: 60 }}>
-          <color attach="background" args={['#87CEEB']} />
-          <fog attach="fog" args={['#87CEEB', 10, 50]} />
+      <Canvas shadows camera={{ position: [0, 5, 10], fov: 60 }}>
+        <color attach="background" args={['#87CEEB']} />
+        <fog attach="fog" args={['#87CEEB', 10, 50]} />
+        <Suspense fallback={null}>
           <OrbitControls />
           <Stars />
           <Lighting />
           <BoxingArena />
-          <Boxer position={[-2, 0, 0]} handlePunch={() => handlePunch('player')} />
-          <Opponent position={[2, 0, 0]} handlePunch={() => handlePunch('opponent')} />
-        </Canvas>
-        <UserInterface
-          gameState={gameState}
-          startFight={startFight}
-          playerHealth={playerHealth}
-          opponentHealth={opponentHealth}
-          score={score}
-        />
-        <SoundEffects gameState={gameState} />
-      </Suspense>
+          {gameState === 'fighting' && (
+            <>
+              <Boxer position={[-2, 0, 0]} handlePunch={() => handlePunch('player')} />
+              <Opponent position={[2, 0, 0]} handlePunch={() => handlePunch('opponent')} />
+            </>
+          )}
+        </Suspense>
+      </Canvas>
+      <UserInterface
+        gameState={gameState}
+        startFight={startFight}
+        playerHealth={playerHealth}
+        opponentHealth={opponentHealth}
+        score={score}
+      />
+      <SoundEffects gameState={gameState} />
     </div>
   );
 }
