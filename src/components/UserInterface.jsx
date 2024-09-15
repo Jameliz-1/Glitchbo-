@@ -2,7 +2,7 @@ import React from 'react';
 import './UserInterface.css';
 
 const UserInterface = ({ gameState, startFight, playerHealth, opponentHealth, score }) => {
-  console.log('Current game state:', gameState);
+  console.log('Rendering UserInterface, gameState:', gameState);
   return (
     <div className="user-interface">
       <h1 className="title">3D Boxing Arena</h1>
