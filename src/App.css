@@ -19,7 +19,7 @@ canvas {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 10; /* Increased z-index to ensure it's above the canvas */
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -40,11 +40,12 @@ canvas {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .user-interface button:hover {
   background-color: #ff725c;
+  transform: scale(1.05);
 }
 
 .title {
@@ -52,6 +53,7 @@ canvas {
   text-align: center;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #ff4136; /* Changed to match button color */
 }
 
 .health-bars {
@@ -67,14 +69,16 @@ canvas {
 .health-label {
   font-size: 1.2rem;
   margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .health-bar-outer {
   width: 100%;
   height: 20px;
-  background-color: #333;
+  background-color: rgba(51, 51, 51, 0.7);
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .health-bar-inner {
@@ -99,16 +103,21 @@ canvas {
 .score {
   font-size: 1.5rem;
   margin-top: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .game-over {
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .game-over h2 {
   font-size: 3rem;
   margin-bottom: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #ff4136;
 }
 
 @media (max-width: 768px) {
@@ -126,5 +135,33 @@ canvas {
 
   .game-over h2 {
     font-size: 2rem;
+  }
+
+  .user-interface button {
+    font-size: 1.2rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .health-label {
+    font-size: 0.9rem;
+  }
+
+  .score {
+    font-size: 1rem;
+  }
+
+  .game-over h2 {
+    font-size: 1.5rem;
+  }
+
+  .user-interface button {
+    font-size: 1rem;
+    padding: 6px 12px;
   }
 }
