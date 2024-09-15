@@ -1,69 +1,50 @@
-import React, { useRef, useState } from 'react';
-
+import React, { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
+import { useGLTF, useAnimations } from '@react-three/drei';
 
-import { useGLTF } from '@react-three/drei';
-
-const Boxer = ({ position, handlePunch }) => {
-
-  const { nodes, materials } = useGLTF('/models/boxer.glb');
-
-  const boxerRef = useRef();
-
+const Boxer = ({ position, handlePunch, isPlayer }) => {
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF('/models/boxer.glb');
+  const { actions } = useAnimations(animations, group);
   const [isPunching, setIsPunching] = useState(false);
 
+  useEffect(() => {
+    actions.Idle.play();
+  }, [actions]);
+
   useFrame((state, delta) => {
-
-    if (boxerRef.current) {
-
+    if (group.current) {
       if (isPunching) {
-
-        boxerRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 10) * 0.2;
-
+        group.current.rotation.y += delta * 5;
       } else {
-
-        boxerRef.current.rotation.z = 0;
-
+        group.current.rotation.y = Math.sin(state.clock.elapsedTime) * 0.1;
       }
-
     }
-
   });
 
   const onPunch = () => {
-
     setIsPunching(true);
-
+    actions.Punch.reset().play();
     handlePunch();
-
-    setTimeout(() => setIsPunching(false), 300);
-
+    setTimeout(() => {
+      setIsPunching(false);
+      actions.Idle.reset().play();
+    }, 500);
   };
 
   return (
-
-    <group ref={boxerRef} position={position} onClick={onPunch}>
-
-      <mesh
-
+    <group ref={group} position={position} onClick={isPlayer ? onPunch : undefined}>
+      <skinnedMesh
         geometry={nodes.Boxer.geometry}
-
         material={materials.Body}
-
+        skeleton={nodes.Boxer.skeleton}
         scale={0.5}
-
         castShadow
-
       >
-
-        <meshStandardMaterial attach="material" color="#0000FF" />
-
-      </mesh>
-
+        <meshStandardMaterial attach="material" color={isPlayer ? "#4285F4" : "#DB4437"} />
+      </skinnedMesh>
     </group>
-
   );
-
 };
 
 export default Boxer;
