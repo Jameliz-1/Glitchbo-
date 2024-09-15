@@ -20,12 +20,13 @@ function App() {
   }, [gameState]);
 
   const startFight = () => {
-    console.log('Starting fight...');
-    setGameState('fighting');
-    setPlayerHealth(100);
-    setOpponentHealth(100);
-    setScore(0);
-  };
+  console.log('Starting fight...');
+  setGameState('fighting');
+  setPlayerHealth(100);
+  setOpponentHealth(100);
+  setScore(0);
+  console.log('New game state:', 'fighting');
+};
 
   const handlePunch = (attacker) => {
     console.log(`${attacker} punched!`);
