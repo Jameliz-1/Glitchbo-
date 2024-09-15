@@ -3,6 +3,7 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: #87CEEB; /* Sky blue background */
 }
 
 canvas {
@@ -17,10 +18,113 @@ canvas {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   z-index: 2;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'Bangers', cursive;
 }
 
 .user-interface button {
   pointer-events: auto;
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  background-color: #ff4136;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-interface button:hover {
+  background-color: #ff725c;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.health-bars {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.health-bar {
+  width: 45%;
+}
+
+.health-label {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.health-bar-outer {
+  width: 100%;
+  height: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.health-bar-inner {
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+.player-health {
+  background-color: #2ecc71;
+}
+
+.opponent-health {
+  background-color: #e74c3c;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.game-over {
+  text-align: center;
+}
+
+.game-over h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .health-label {
+    font-size: 1rem;
+  }
+
+  .score {
+    font-size: 1.2rem;
+  }
+
+  .game-over h2 {
+    font-size: 2rem;
+  }
 }
