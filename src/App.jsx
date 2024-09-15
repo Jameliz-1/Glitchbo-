@@ -41,21 +41,17 @@ function App() {
   return (
     <div className="App">
       <Canvas shadows camera={{ position: [0, 5, 10], fov: 60 }}>
-        <color attach="background" args={['#87CEEB']} />
-        <fog attach="fog" args={['#87CEEB', 10, 50]} />
-        <Suspense fallback={null}>
-          <OrbitControls />
-          <Stars />
-          <Lighting />
-          <BoxingArena />
-          {gameState === 'fighting' && (
-            <>
-              <Boxer position={[-2, 0, 0]} handlePunch={() => handlePunch('player')} />
-              <Opponent position={[2, 0, 0]} handlePunch={() => handlePunch('opponent')} />
-            </>
-          )}
-        </Suspense>
-      </Canvas>
+  <color attach="background" args={['#87CEEB']} />
+  <fog attach="fog" args={['#87CEEB', 10, 50]} />
+  <Suspense fallback={null}>
+    <OrbitControls />
+    <Stars />
+    <Lighting />
+    <BoxingArena />
+    <Boxer position={[-2, 0, 0]} handlePunch={() => handlePunch('player')} />
+    <Opponent position={[2, 0, 0]} handlePunch={() => handlePunch('opponent')} />
+  </Suspense>
+</Canvas>
       <UserInterface
         gameState={gameState}
         startFight={startFight}
