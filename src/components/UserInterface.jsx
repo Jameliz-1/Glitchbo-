@@ -3,6 +3,7 @@ import './UserInterface.css';
 
 const UserInterface = ({ gameState, startFight, playerHealth, opponentHealth, score }) => {
   console.log('Rendering UserInterface, gameState:', gameState);
+  console.log('playerHealth:', playerHealth, 'opponentHealth:', opponentHealth, 'score:', score);
   return (
     <div className="user-interface">
       <h1 className="title">3D Boxing Arena</h1>
